@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :employees
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  devise_for :employees, controllers: {
+    sessions:       'member/employees/sessions',
+    passwords:      'member/employees/passwords',
+    registrations:  'member/employees/registrations'
+  }
   root :to => 'member/homes#top'
 
   namespace :manager do
