@@ -1,0 +1,2 @@
+class ClientComment < ApplicationRecord
+end

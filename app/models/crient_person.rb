@@ -1,0 +1,2 @@
+class CrientPerson < ApplicationRecord
+end

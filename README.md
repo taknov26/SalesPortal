@@ -1,24 +1,51 @@
-# README
+# セールスポータル
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
 
-Things you may want to cover:
+世の中のセールスマン向けのツール
+原価計算もできる売上管理機能と、売上に紐づけられる顧客情報を登録できる。
+昨今転職が当たり前の時代、引継ぎに困らないように日ごろから営業に必要な情報を共有できるグループウェアです。
 
-* Ruby version
+### サイトテーマ
 
-* System dependencies
+顧客情報を共有して情報の風化を防ぐ！
+利益率まで意識した売上を管理することで営業員の数字に対する意識を強める！
+スケジュールも管理できて一石三鳥！
 
-* Configuration
+### テーマを選んだ理由
 
-* Database creation
+現職ではチーム営業体制だったものの、多忙を理由に情報共有が滞ったり疎かになったりしていた。
+売上を含む情報管理もエクセルや名刺ファイルなど共通で利用しているものがない上に、使用しているツールもバラバラだったため、
+とても非効率であった。（デジタル、アナログも混合）
+改善しようと様々なサービスを調べたが、求めるサービスが全てそろっていなかったり、機能が足りなかったりと
+ニーズにマッチするサービスがなかった。
+そんな経験を踏まえ、初めて自分で 0 から考えて作るものとして
+自分の経験ベースで実用性のあるものを作りたかったため、このテーマを選択した。
 
-* Database initialization
+### ターゲットユーザ
 
-* How to run the test suite
+利益率が一定でない商品を扱う営業マン
+人の入れ替わりが多く、引継ぎで通常業務が圧迫されている営業マン
 
-* Services (job queues, cache servers, search engines, etc.)
+### 主な利用シーン
 
-* Deployment instructions
+日々のスケジュール管理、売上発生タイミング、新規顧客や新規担当との挨拶時
 
-* ...
+## 設計書
+
+### 機能一覧
+
+<https://docs.google.com/spreadsheets/d/1BKY_94jWJNkaf7jL-DgwqTryT13Vc2hWm7h7SYAJlyc/edit?usp=sharing>
+
+## 開発環境
+
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JS ライブラリ：jQuery
+- 仮想環境：Vagrant,VirtualBox
+
+## 使用素材
+
+- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名と URL を明記してください。
+- 使用しない場合は、使用素材の項目を README から削除してください。

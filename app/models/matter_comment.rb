@@ -1,0 +1,2 @@
+class MatterComment < ApplicationRecord
+end
