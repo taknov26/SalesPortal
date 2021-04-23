@@ -8,4 +8,12 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
+    - if employee_signed_in?
+      ul
+        li = link_to "マイページ", root_path
+        li = link_to "売上一覧", root_path
+        li = link_to "クライアント一覧", root_path
+        li = link_to "メンバー", root_path
+        li = link_to "管理者", root_path
+        li = link_to "ログアウト", root_path
     = yield

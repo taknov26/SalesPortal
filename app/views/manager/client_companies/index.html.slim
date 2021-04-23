@@ -1,0 +1,19 @@
+h3 クライアント会社名登録／一覧
+
+= form_with model: @client_company, url: manager_client_companies_path, local:true do |f|
+  table
+    tbody
+      tr
+        th = f.text_field :name
+        th = f.submit "登録"
+
+  table
+    thead
+      tr
+        th 会社名
+        th colspan="1"
+    tbody
+      - @client_companies.each do |client_company|
+        tr
+          td = client_company.name
+          td = link_to "編集", edit_manager_client_company_path(client_company)
