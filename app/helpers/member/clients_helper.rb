@@ -1,0 +1,2 @@
+module Member::ClientsHelper
+end

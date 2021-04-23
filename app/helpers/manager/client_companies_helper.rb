@@ -1,0 +1,2 @@
+module Manager::ClientCompaniesHelper
+end
