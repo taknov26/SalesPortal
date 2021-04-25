@@ -6,5 +6,6 @@ class Employee < ApplicationRecord
   has_many :matters
   has_many :matter_comments
   has_many :client_comments
+  attachment :image
 
 end

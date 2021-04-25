@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_21_025733) do
+ActiveRecord::Schema.define(version: 2021_04_25_080949) do
 
   create_table "client_comments", force: :cascade do |t|
     t.integer "employee_id"
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 2021_04_21_025733) do
     t.string "belonging"
     t.string "position"
     t.string "phone_extension"
-    t.string "icon_id"
+    t.string "image_id"
     t.boolean "is_active", default: true
     t.string "role", default: "1"
     t.datetime "created_at", null: false

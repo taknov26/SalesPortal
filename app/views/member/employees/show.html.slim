@@ -1,3 +1,29 @@
 h3 社員詳細
 
-div = attachment_image_tag @employee, :icon, format:"jpeg", fallback: "", size: "250x250"
+div = attachment_image_tag @employee, :image, format:"jpeg", fallback: "m_e_others_501.png", size: "250x250"
+
+table
+  tbody
+    tr
+      td 名前
+      td = @employee.name
+    tr
+      td 名前カナ
+      td = @employee.name_kana
+    tr
+      td 所属
+      td = @employee.belonging
+    tr
+      td 役職
+      td = @employee.position
+    tr
+      td TEL
+      td = @employee.telephone_number
+    tr
+      td 内線
+      td = @employee.phone_extension
+    tr
+      td メールアドレス
+      td = @employee.email
+
+p = link_to "編集する", edit_member_employee_path(@employee)

@@ -1,0 +1,30 @@
+h3 登録情報編集
+
+= form_with model: @employee, url: member_employee_path, method: :patch, local:true do |f|
+  table
+    tbody
+      tr
+        td アイコン
+        td = f.attachment_field :image
+      tr
+        td 名前
+        td = f.text_field :name
+      tr
+        td 名前カナ
+        td = f.text_field :name_kana
+      tr
+        td 所属
+        td = f.text_field :belonging
+      tr
+        td 役職
+        td = f.text_field :position
+      tr
+        td TEL
+        td = @employee.telephone_number
+      tr
+        td 内線
+        td = f.text_field :phone_extension
+      tr
+        td メールアドレス
+        td = @employee.email
+  = f.submit "更新"
