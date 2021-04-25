@@ -13,7 +13,8 @@ html
         li = link_to "マイページ", root_path
         li = link_to "売上一覧", root_path
         li = link_to "クライアント一覧", root_path
-        li = link_to "メンバー", root_path
+        li = link_to "メンバー", member_employees_path
         li = link_to "管理者", root_path
-        li = link_to "ログアウト", root_path
+        li = link_to "ログアウト", destroy_employee_session_path, method: :delete
+
     = yield

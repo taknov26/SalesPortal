@@ -5,15 +5,18 @@ class ApplicationController < ActionController::Base
   #   if employee_signed_in?
   #     root_path
   #   else
-  #     new_employee_sessio_path
+  #     new_employee_session_path
   #   end
   # end
   # ログイン後の画面遷移設定
 
+  def after_sign_out_path_for(resource)
+      new_employee_session_path
+  end
+
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up,
-    keys: [:name, :name_kana, :telephone_number, :belonging, :position, :phone_extension])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :name, :name_kana, :telephone_number, :belonging, :position, :phone_extension])
   end
 end

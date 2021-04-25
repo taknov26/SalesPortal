@@ -10,4 +10,8 @@ Rails.application.routes.draw do
     resources :client_companies, only:[:index, :create, :edit, :update]
     resources :employees, only:[:index, :update]
   end
+
+  namespace :member do
+    resources :employees, only:[:index, :update, :edit, :show]
+  end
 end

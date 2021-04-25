@@ -1,6 +1,6 @@
 <h3>新規登録</h3>
 
-<%= form_with model: @employee, url: employee_registration_path do |f| %>
+<%= form_with model: @employee, url: employee_registration_path, local:true do |f| %>
   <%= render "member/employees/shared/error_messages", resource: resource %>
 
   <table>
@@ -19,7 +19,7 @@
       </tr>
       <tr>
         <td>内線</td>
-        <td><%= f.text_field :phone_extension%></td>
+        <td><%= f.text_field :phone_extension %></td>
       </tr>
       <tr>
         <td>所属</td>

@@ -1,0 +1,18 @@
+h3 社員一覧
+
+table
+  thead
+    tr
+      th アイコン
+      th 氏名
+      th 所属
+      th 役職
+      th colspan="1"
+  tbody
+    - @employees.each do |employee|
+      tr
+        td アイコン
+        td = employee.name
+        td = employee.belonging
+        td = employee.position
+        td = link_to "詳細", member_employee_path(employee)
