@@ -11,17 +11,27 @@ class Member::ClientsController < ApplicationController
 
   def create
     client = Client.new(client_params)
-    client.save
-    redirect_to member_client_path(client)
+    if client.save
+      redirect_to member_client_path(client)
+      flash[:notice] = "保存しました。"
+    else
+      render "new"
+    end
   end
 
   def show
+    @client = Client.find(params[:id])
   end
 
   def edit
+    @client = Client.find(params[:id])
+    @client_companies = ClientCompany.all
   end
 
   def update
+    @client = Client.find(params[:id])
+    @client.update(client_params)
+    redirect_to member_client_path(@client)
   end
 
   private

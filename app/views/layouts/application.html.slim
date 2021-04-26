@@ -8,13 +8,16 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    - if employee_signed_in?
-      ul
-        li = link_to "マイページ", root_path
-        li = link_to "売上一覧", root_path
-        li = link_to "クライアント一覧", root_path
-        li = link_to "メンバー", member_employees_path
-        li = link_to "管理者", root_path
-        li = link_to "ログアウト", destroy_employee_session_path, method: :delete
+    header
+      - if employee_signed_in?
+        ul
+          li = link_to "マイページ", root_path
+          li = link_to "売上一覧", root_path
+          li = link_to "クライアント一覧", member_clients_path
+          li = link_to "メンバー", member_employees_path
+          li = link_to "管理者", root_path
+          li = link_to "ログアウト", destroy_employee_session_path, method: :delete
+    p .notice = notice
+    p .alert = alert
 
     = yield

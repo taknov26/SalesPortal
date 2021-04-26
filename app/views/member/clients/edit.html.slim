@@ -1,0 +1,17 @@
+h3 クライアント情報編集
+= form_with model: @client, url: member_client_path, method: :patch, local:true do |f|
+  table
+    tbody
+      tr
+        td 企業名
+        td = f.collection_select :client_company_id, @client_companies, :id, :name, prompt: "--選択してください--"
+      tr
+        td 支社・支店
+        td = f.text_field :branch_name
+      tr
+        td 所在地
+        td = f.text_field :address
+      tr
+        td 電話番号
+        td = f.text_field :telephone_number
+  = f.submit "更新"

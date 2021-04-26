@@ -1,0 +1,18 @@
+h3 クライアント一覧
+
+table
+  thead
+    tr
+      th 企業名
+      th 部署名
+      th 所在地
+      th 連絡先
+      th colspan="1"
+  tbody
+    - @clients.each do |client|
+      tr
+        td = client.client_company.name
+        td = client.branch_name
+        td = client.address
+        td = client.telephone_number
+        td = link_to "詳細", member_client_path(client)

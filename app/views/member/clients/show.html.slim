@@ -1,0 +1,21 @@
+h3 クライアント詳細画面
+
+span = link_to "編集する", edit_member_client_path(@client)
+
+table
+  tbody
+    tr
+      td 会社名
+      td = @client.client_company.name
+    tr
+      td 支社・支店
+      td = @client.branch_name
+    tr
+      td 所在地
+      td = @client.address
+    tr
+      td 連絡先
+      td = @client.telephone_number
+    tr
+      td 登録日
+      td = @client.created_at
