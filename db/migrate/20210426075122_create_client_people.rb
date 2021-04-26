@@ -1,6 +1,6 @@
-class CreateCrientPeople < ActiveRecord::Migration[5.2]
+class CreateClientPeople < ActiveRecord::Migration[5.2]
   def change
-    create_table :crient_people do |t|
+    create_table :client_people do |t|
       t.integer :client_id
       t.string :name
       t.string :department

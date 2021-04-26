@@ -17,7 +17,7 @@ html
           li = link_to "メンバー", member_employees_path
           li = link_to "管理者", root_path
           li = link_to "ログアウト", destroy_employee_session_path, method: :delete
-    p .notice = notice
-    p .alert = alert
+    = notice
+    = alert
 
     = yield

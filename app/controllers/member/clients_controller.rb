@@ -12,8 +12,7 @@ class Member::ClientsController < ApplicationController
   def create
     client = Client.new(client_params)
     if client.save
-      redirect_to member_client_path(client)
-      flash[:notice] = "保存しました。"
+      redirect_to member_client_path(client), notice: "保存しました。"
     else
       render "new"
     end
@@ -21,6 +20,9 @@ class Member::ClientsController < ApplicationController
 
   def show
     @client = Client.find(params[:id])
+    @client_person = @client.client_people.build
+    @client_people = ClientPerson.where(client_id: params[:id])
+
   end
 
   def edit
@@ -30,8 +32,11 @@ class Member::ClientsController < ApplicationController
 
   def update
     @client = Client.find(params[:id])
-    @client.update(client_params)
-    redirect_to member_client_path(@client)
+    if @client.update(client_params)
+     redirect_to member_client_path(@client), notice: "更新しました。"
+    else
+      render "edit"
+    end
   end
 
   private

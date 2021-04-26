@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_25_080949) do
+ActiveRecord::Schema.define(version: 2021_04_26_075122) do
 
   create_table "client_comments", force: :cascade do |t|
     t.integer "employee_id"
@@ -22,6 +22,17 @@ ActiveRecord::Schema.define(version: 2021_04_25_080949) do
 
   create_table "client_companies", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "client_people", force: :cascade do |t|
+    t.integer "client_id"
+    t.string "name"
+    t.string "department"
+    t.string "telephone_number"
+    t.string "email"
+    t.string "status", default: "0"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -39,17 +50,6 @@ ActiveRecord::Schema.define(version: 2021_04_25_080949) do
     t.integer "matter_id"
     t.string "item"
     t.integer "item_price"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "crient_people", force: :cascade do |t|
-    t.integer "client_id"
-    t.string "name"
-    t.string "department"
-    t.string "telephone_number"
-    t.string "email"
-    t.string "status", default: "0"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

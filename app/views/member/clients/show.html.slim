@@ -18,4 +18,34 @@ table
       td = @client.telephone_number
     tr
       td 登録日
-      td = @client.created_at
+      td = l @client.created_at
+
+h3 担当者一覧
+table
+  thead
+    tr
+      th 部署名
+      th 氏名
+      th 電話
+      th メール
+      th ステータス
+  tbody
+    - @client_people.each do |client_person|
+      tr
+        td = client_person.department
+        td = client_person.name
+        td = client_person.telephone_number
+        td = client_person.email
+        td = form_with model: client_person, url: member_client_client_person_path(client_person.client), local:true do |f|
+           = f.select :status, [["現職","0"], ["異動","1"], ["退職","2"]]
+           = f.submit "更新"
+
+table
+  tbody
+    = form_with model: @client_person, url: member_client_client_people_path(@client), local: true do |f|
+      tr
+        td = f.text_field :department
+        td = f.text_field :name
+        td = f.text_field :telephone_number
+        td = f.text_field :email
+        td = f.submit "登録"
