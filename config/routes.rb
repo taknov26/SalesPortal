@@ -13,5 +13,6 @@ Rails.application.routes.draw do
 
   namespace :member do
     resources :employees, only:[:index, :update, :edit, :show]
+    resources :clients, only:[:index, :update, :edit, :show, :new, :create]
   end
 end
