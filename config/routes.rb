@@ -16,5 +16,8 @@ Rails.application.routes.draw do
     resources :clients, only:[:index, :update, :edit, :show, :new, :create] do
       resources :client_people, only:[:create, :update]
     end
+    resources :matters, except:[:destroy] do
+      resources :costs, only:[:create, :destroy]
+    end
   end
 end
