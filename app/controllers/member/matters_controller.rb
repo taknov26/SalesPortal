@@ -2,10 +2,14 @@ class Member::MattersController < ApplicationController
 
   def new
     @matter = Matter.new
+    @client_companies = ClientCompany.all
+    @clients = Client.all
+    @client_people = ClientPerson.all
   end
 
   def create
     @matter = Matter.new(matter_params)
+    @employee = current_employee
     if @matter.save
       redirect_to member_matter_path(@matter), notice: "登録完了"
     else
@@ -34,7 +38,10 @@ class Member::MattersController < ApplicationController
     @matters = Matter.all
   end
 
-  private matter_params
+  private
+
+  def matter_params
   params.require(:matter).permit(:employee_id, :client_company_id, :client_id, :client_person_id, :name, :price, :status, :fixed_date)
+  end
 
 end

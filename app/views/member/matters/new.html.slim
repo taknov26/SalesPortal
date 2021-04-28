@@ -1,0 +1,25 @@
+h3 受注案件登録
+
+= form_with model: @matter, url: member_matters_path, method: :post, local:true do |f|
+  table
+    tbody
+      tr
+        td 案件名
+        td = f.text_field :name
+      tr
+        td クライアント企業名
+        td = f.collection_select :client_company_id, @client_companies, :id, :name, prompt: "--選択してください--"
+      tr
+        td クライアント
+        td = f.collection_select :client_id, @clients, :id, :branch_name, prompt: "--選択してください--"
+      tr
+        td 担当者
+        td = f.collection_select :client_person_id, @client_people, :id, :name, prompt: "--選択してください--"
+      tr
+        td 売上(税抜)
+        td = f.text_field :price
+      tr
+        td ステータス
+        td = f.select :status, [["見積り"], ["受注"], ["納品済"], ["請求済"], ["確定"]], prompt: "選択"
+  = f.submit "登録"
+  /モデル要編集
