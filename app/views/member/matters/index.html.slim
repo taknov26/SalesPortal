@@ -1,0 +1,26 @@
+h3 受注案件一覧
+
+table
+  thead
+    tr
+      th 案件名
+      th クライアント会社名
+      th 担当者
+      th 売上確定日
+      th 売上(税抜)
+      th 粗利
+      th ステータス
+      th コメント数
+      th colspan="1"
+  tbody
+    - @matters.each do |matter|
+      tr
+        td = matter.name
+        td = matter.client_company.name
+        td = matter.employee.name
+        td = matter.fixed_date
+        td = matter.price
+        td "粗利(売上ー粗利合計）"
+        td = matter.status
+        td "コメント数"
+        td = link_to "詳細", member_matter_path(matter)

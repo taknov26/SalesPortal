@@ -1,0 +1,29 @@
+h3 受注案件詳細
+
+table
+  tbody
+      tr
+        td 案件名
+        td = @matter.name
+      tr
+        td クライアント
+        td
+          = @matter.client_company.name
+          = @matter.client.branch_name
+          br
+          = @matter.client_person.name
+      tr
+        td 担当者
+        td = @matter.employee.name
+      tr
+        td 登録日
+        td = l @matter.created_at
+      tr
+        td 売上確定日
+        td = @matter.fixed_date
+      tr
+        td ステータス
+        td = @matter.status
+span = link_to "編集する", edit_member_matter_path(@matter)
+
+h3 仕入れ原価
