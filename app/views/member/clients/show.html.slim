@@ -30,6 +30,14 @@ table
       th メール
       th ステータス
   tbody
+    = form_with model: @client_person, url: member_client_client_people_path(@client), local: true do |f|
+      tr
+        td = f.text_field :department
+        td = f.text_field :name
+        td = f.text_field :telephone_number
+        td = f.text_field :email
+        td = f.submit "新規登録"
+  tbody
     - @client_people.each do |client_person|
       tr
         td = client_person.department
@@ -40,12 +48,4 @@ table
            = f.select :status, [["現職","0"], ["異動","1"], ["退職","2"]]
            = f.submit "更新"
 
-table
-  tbody
-    = form_with model: @client_person, url: member_client_client_people_path(@client), local: true do |f|
-      tr
-        td = f.text_field :department
-        td = f.text_field :name
-        td = f.text_field :telephone_number
-        td = f.text_field :email
-        td = f.submit "登録"
+

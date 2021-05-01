@@ -11,7 +11,7 @@ class Member::MattersController < ApplicationController
     if @matter.save
       redirect_to member_matter_path(@matter), notice: "登録完了"
     else
-      render "new", alert: "登録失敗"
+      render "new"
     end
   end
 
@@ -31,7 +31,7 @@ class Member::MattersController < ApplicationController
   def show
     @matter = Matter.find(params[:id])
     @cost = @matter.costs.build
-    # @costs = Cost.where(matter_id params[:id])
+    @costs = Cost.where(matter_id: params[:id])
   end
 
   def index

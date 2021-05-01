@@ -6,7 +6,7 @@ class Member::ClientPeopleController < ApplicationController
     if @client_person.save
       redirect_to member_client_path(@client), notice: "登録完了。"
     else
-      render "clients/show", alert: "登録できませんでした。"
+      render "clients/show"
     end
   end
 
@@ -15,7 +15,7 @@ class Member::ClientPeopleController < ApplicationController
     if @client_person.update(client_person_params)
       redirect_to member_client_path(@client_person.client), notice: "更新しました。"
     else
-      render"clients/show", alert: "更新に失敗しました"
+      render"clients/show"
     end
   end
 

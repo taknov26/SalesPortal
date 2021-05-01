@@ -27,3 +27,23 @@ table
 span = link_to "編集する", edit_member_matter_path(@matter)
 
 h3 仕入れ原価
+table
+  thead
+    tr
+      th 費目
+      th 原価
+      th colspan="1"
+  tbody
+    = form_with model: @cost, url: member_matter_costs_path(@matter), local:true do |f|
+      tr
+        td = f.text_field :item
+        td = f.text_field :item_price
+        td = f.submit "登録"
+  tbody
+    - @costs.each do |cost|
+      tr
+        td = cost.item
+        td = cost.item_price
+        td = link_to "削除", member_matter_cost_path(matter_id:cost.matter_id, id:cost.id), method: :delete
+
+
