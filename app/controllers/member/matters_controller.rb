@@ -32,6 +32,7 @@ class Member::MattersController < ApplicationController
     @matter = Matter.find(params[:id])
     @cost = @matter.costs.build
     @costs = Cost.where(matter_id: params[:id])
+    @matter_comment = MatterComment.new
   end
 
   def index

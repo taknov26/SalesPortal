@@ -1,5 +1,7 @@
 h3 受注案件一覧
 
+p = link_to "追加", new_member_matter_path
+
 table
   thead
     tr
@@ -19,8 +21,11 @@ table
         td = matter.client_company.name
         td = matter.employee.name
         td = matter.fixed_date
-        td = matter.price
-        td "粗利(売上ー粗利合計）"
+        td = number_to_currency(matter.price)
+        td = number_to_currency(matter.price - matter.costs.all.sum(:item_price))
         td = matter.status
-        td "コメント数"
+        td
+          | コメント：
+          = matter.matter_comments.count
         td = link_to "詳細", member_matter_path(matter)
+

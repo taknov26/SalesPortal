@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     end
     resources :matters, except:[:destroy] do
       resources :costs, only:[:create, :destroy]
+      resources :matter_comments, only:[:create, :destroy]
     end
   end
 end

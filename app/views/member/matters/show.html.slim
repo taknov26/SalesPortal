@@ -27,23 +27,50 @@ table
 span = link_to "編集する", edit_member_matter_path(@matter)
 
 h3 仕入れ原価
+= form_with model: @cost, url: member_matter_costs_path(@matter), local:true do |f|
+
+  table
+    thead
+      tr
+        th 費目
+        th 原価
+        th colspan="1"
+    tbody
+        tr
+          td = f.text_field :item
+          td = f.text_field :item_price
+          td = f.submit "登録"
+    tbody
+      - @costs.each do |cost|
+        tr
+          td = cost.item
+          td = number_to_currency(cost.item_price)
+          td = link_to "削除", member_matter_cost_path(matter_id:cost.matter_id, id:cost.id), method: :delete
+
+h3 売上
 table
-  thead
+  tbody
     tr
-      th 費目
-      th 原価
-      th colspan="1"
-  tbody
-    = form_with model: @cost, url: member_matter_costs_path(@matter), local:true do |f|
-      tr
-        td = f.text_field :item
-        td = f.text_field :item_price
-        td = f.submit "登録"
-  tbody
-    - @costs.each do |cost|
-      tr
-        td = cost.item
-        td = cost.item_price
-        td = link_to "削除", member_matter_cost_path(matter_id:cost.matter_id, id:cost.id), method: :delete
+      td 売上
+      td = number_to_currency(@matter.price)
+    tr
+      td 仕入れ原価
+      td = number_to_currency(@matter.costs.all.sum(:item_price))
+    tr
+      td 粗利
+      td = number_to_currency(@matter.price.to_i - @matter.costs.all.sum(:item_price).to_i)
 
+h3 コメント
+p
+  |コメント件数
+  = @matter.matter_comments.count
+= form_with model: @matter_comment, url: member_matter_matter_comments_path(@matter), local:true do |f|
+  = f.text_area :comment, rows:'5', placeholder: "コメントをここに"
+  = f.submit "投稿"
 
+- @matter.matter_comments.each do |matter_comment|
+  = matter_comment.comment
+  = matter_comment.employee.name
+  = l matter_comment.created_at
+  - if matter_comment.employee == current_employee
+    = link_to "削除", member_matter_matter_comment_path(matter_id: matter_comment.matter.id, id: matter_comment.id), method: :delete
