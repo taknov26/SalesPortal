@@ -63,14 +63,18 @@ table
 h3 コメント
 p
   |コメント件数
+  
   = @matter.matter_comments.count
 = form_with model: @matter_comment, url: member_matter_matter_comments_path(@matter), local:true do |f|
   = f.text_area :comment, rows:'5', placeholder: "コメントをここに"
   = f.submit "投稿"
 
+div
 - @matter.matter_comments.each do |matter_comment|
-  = matter_comment.comment
-  = matter_comment.employee.name
-  = l matter_comment.created_at
-  - if matter_comment.employee == current_employee
-    = link_to "削除", member_matter_matter_comment_path(matter_id: matter_comment.matter.id, id: matter_comment.id), method: :delete
+  p = matter_comment.comment
+  p
+    |投稿者：
+    = matter_comment.employee.name
+    = l matter_comment.created_at
+    - if matter_comment.employee == current_employee
+     = link_to "削除", member_matter_matter_comment_path(matter_id: matter_comment.matter.id, id: matter_comment.id), method: :delete

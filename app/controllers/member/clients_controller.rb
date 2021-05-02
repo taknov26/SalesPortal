@@ -22,7 +22,7 @@ class Member::ClientsController < ApplicationController
     @client = Client.find(params[:id])
     @client_person = @client.client_people.build
     @client_people = ClientPerson.where(client_id: params[:id])
-
+    @client_comment = ClientComment.new
   end
 
   def edit
