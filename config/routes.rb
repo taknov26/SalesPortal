@@ -4,7 +4,9 @@ Rails.application.routes.draw do
     passwords:      'member/employees/passwords',
     registrations:  'member/employees/registrations'
   }
+
   root :to => 'member/homes#top'
+  get "manager/top" =>"manager/homes#top"
 
   namespace :manager do
     resources :client_companies, only:[:index, :create, :edit, :update]

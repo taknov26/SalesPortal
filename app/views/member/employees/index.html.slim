@@ -11,7 +11,7 @@ table
   tbody
     - @employees.each do |employee|
       tr
-        td アイコン
+        td = attachment_image_tag employee, :image, format:'jpeg', fallback: "m_e_others_501.png", size: "40x40"
         td = employee.name
         td = employee.belonging
         td = employee.position

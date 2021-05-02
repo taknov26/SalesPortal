@@ -4,7 +4,7 @@ class Member::ClientPeopleController < ApplicationController
     @client = Client.find(params[:client_id])
     @client_person = @client.client_people.build(client_person_params)
     if @client_person.save
-      redirect_to member_client_path(@client), notice: "登録完了。"
+      redirect_to member_client_path(@client), notice: "クライアント担当者を1名追加しました。"
     else
       render "clients/show"
     end
@@ -13,7 +13,7 @@ class Member::ClientPeopleController < ApplicationController
   def update
     @client_person = ClientPerson.find(params[:id])
     if @client_person.update(client_person_params)
-      redirect_to member_client_path(@client_person.client), notice: "更新しました。"
+      redirect_to member_client_path(@client_person.client), notice: "クライアント担当者のステータスを更新しました。"
     else
       render"clients/show"
     end
