@@ -44,7 +44,7 @@ table
         td = client_person.name
         td = client_person.telephone_number
         td = client_person.email
-        td = form_with model: client_person, url: member_client_client_person_path(client_person.client), local:true do |f|
+        td = form_with model: client_person, url: member_client_client_person_path(id: client_person.id, client_id: client_person.client.id), local:true do |f|
            = f.select :status, [["現職","0"], ["異動","1"], ["退職","2"]]
            = f.submit "更新"
 

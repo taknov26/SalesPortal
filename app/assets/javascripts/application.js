@@ -10,7 +10,16 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery
 //= require rails-ujs
+//= require moment
+//= require fullcalendar
 //= require activestorage
-//= require turbolinks
+// require turbolinks
 //= require_tree .
+
+$(function(){
+  $('#calendar').fullCalendar({
+    events: "member/matters.json",
+  });
+});
