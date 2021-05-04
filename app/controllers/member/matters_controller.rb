@@ -33,6 +33,7 @@ class Member::MattersController < ApplicationController
     @cost = @matter.costs.build
     @costs = Cost.where(matter_id: params[:id])
     @matter_comment = MatterComment.new
+    @matter_comments = @matter.matter_comments.order("created_at DESC")
   end
 
   def index

@@ -61,20 +61,9 @@ table
       td = number_to_currency(@matter.price.to_i - @matter.costs.all.sum(:item_price).to_i)
 
 h3 コメント
-p
-  |コメント件数
-  
-  = @matter.matter_comments.count
-= form_with model: @matter_comment, url: member_matter_matter_comments_path(@matter), local:true do |f|
-  = f.text_area :comment, rows:'5', placeholder: "コメントをここに"
-  = f.submit "投稿"
-
 div
-- @matter.matter_comments.each do |matter_comment|
-  p = matter_comment.comment
-  p
-    |投稿者：
-    = matter_comment.employee.name
-    = l matter_comment.created_at
-    - if matter_comment.employee == current_employee
-     = link_to "削除", member_matter_matter_comment_path(matter_id: matter_comment.matter.id, id: matter_comment.id), method: :delete
+  = render partial: 'member/matter_comments/form', locals: { matter: @matter, matter_comment: @matter_comment }
+div
+  div#comments_area
+    = render partial: 'member/matter_comments/index', locals: {matter_comments: @matter_comments}
+

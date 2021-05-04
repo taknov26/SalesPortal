@@ -2,10 +2,10 @@ class Member::MatterCommentsController < ApplicationController
 
   def create
     @matter = Matter.find(params[:matter_id])
-    @comment = current_employee.matter_comments.new(matter_comment_params)
-    @comment.matter_id = @matter.id
-    if @comment.save
-      redirect_to member_matter_path(@matter), notice: "コメントを投稿しました。"
+    @matter_comment = current_employee.matter_comments.new(matter_comment_params)
+    @matter_comment.matter_id = @matter.id
+    if @matter_comment.save
+      render :index
     else
       render "matters/show"
     end
@@ -16,7 +16,7 @@ class Member::MatterCommentsController < ApplicationController
     @matter = Matter.find(params[:matter_id])
     @matter_comment = MatterComment.find(params[:id])
     @matter_comment.destroy
-    redirect_to member_matter_path(params[:matter_id]), notice: "コメントを削除しました。"
+    render :index
   end
 
   private

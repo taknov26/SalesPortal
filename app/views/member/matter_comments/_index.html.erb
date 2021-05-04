@@ -1,0 +1,47 @@
+<p>コメント件数: <%= matter_comments.count %></p>
+<h6 class="more" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">もっと見る>></h6>
+<% matter_comments.first(3).each do |matter_comment| %>
+  <% unless matter_comment.id.nil? %>
+    <div class="comment-container">
+      <div class="comment-box">
+        <div class="comment-text">
+          <div class="comment-entry">
+            <%= matter_comment.comment %>
+            <p><%= matter_comment.employee.name %>
+               <%= matter_comment.created_at %>
+                <% if matter_comment.employee == current_employee %>
+                  <%= link_to member_matter_matter_comment_path(matter_comment.matter_id, matter_comment.id), method: :delete, remote: true do %>
+                    <i class="fas fa-trash" style="color: black;"></i>
+                  <% end %>
+                <% end %>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
+  <div class="collapse" id="collapseExample">
+    <% matter_comments.offset(3).each do |matter_comment| %>
+      <% unless matter_comment.id.nil? %>
+      <div class="comment-container">
+        <div class="comment-box">
+          <div class="comment-text">
+            <div class="comment-entry">
+              <%= matter_comment.comment %>
+              <p><%= matter_comment.employee.name %>
+                 <%= l matter_comment.created_at %>
+                  <% if matter_comment.employee == current_employee %>
+                    <%= link_to member_matter_matter_comment_path(matter_comment.matter_id, matter_comment.id), method: :delete, remote: true do %>
+                      <i class="fas fa-trash" style="color: black;"></i>
+                    <% end %>
+                  <% end %>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+     <% end %>
+    <% end %>
+  </div>
