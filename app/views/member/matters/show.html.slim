@@ -64,6 +64,6 @@ h3 コメント
 div
   = render partial: 'member/matter_comments/form', locals: { matter: @matter, matter_comment: @matter_comment }
 div
-  div#comments_area
+  #comments_area
     = render partial: 'member/matter_comments/index', locals: {matter_comments: @matter_comments}
 

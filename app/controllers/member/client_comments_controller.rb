@@ -2,10 +2,10 @@ class Member::ClientCommentsController < ApplicationController
 
   def create
     @client = Client.find(params[:client_id])
-    @comment = current_employee.client_comments.new(client_comment_params)
-    @comment.client_id = @client.id
-    if @comment.save
-      redirect_to member_client_path(@client), notice: "コメントを投稿しました。"
+    @client_comment = current_employee.client_comments.new(client_comment_params)
+    @client_comment.client_id = @client.id
+    if @client_comment.save
+      render :index
     else
       render "clients/show"
     end
@@ -15,8 +15,8 @@ class Member::ClientCommentsController < ApplicationController
   def destroy
     @client = Client.find(params[:client_id])
     @client_comment = ClientComment.find(params[:id])
-    @cliemt_comment.destroy
-    redirect_to member_client_path(params[:client_id]), notice: "コメントを削除しました。"
+    @client_comment.destroy
+    render :index
   end
 
   private

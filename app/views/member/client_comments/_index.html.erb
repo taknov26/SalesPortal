@@ -1,0 +1,47 @@
+<p>コメント件数: <%= client_comments.count %></p>
+<h6 class="more" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">もっと見る>></h6>
+<% client_comments.first(3).each do |client_comment| %>
+  <% unless client_comment.id.nil? %>
+    <div class="comment-container">
+      <div class="comment-box">
+        <div class="comment-text">
+          <div class="comment-entry">
+            <%= client_comment.comment %>
+            <p><%= client_comment.employee.name %>
+               <%= l client_comment.created_at %>
+                <% if client_comment.employee == current_employee %>
+                  <%= link_to member_client_client_comment_path(client_comment.client_id, client_comment.id), method: :delete, remote: true do %>
+                    <i class="fas fa-trash" style="color: black;"></i>
+                  <% end %>
+                <% end %>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
+  <div class="collapse" id="collapseExample">
+    <% client_comments.offset(3).each do |client_comment| %>
+      <% unless client_comment.id.nil? %>
+      <div class="comment-container">
+        <div class="comment-box">
+          <div class="comment-text">
+            <div class="comment-entry">
+              <%= client_comment.comment %>
+              <p><%= client_comment.employee.name %>
+                 <%= l client_comment.created_at %>
+                  <% if client_comment.employee == current_employee %>
+                    <%= link_to member_client_client_comment_path(client_comment.client_id, client_comment.id), method: :delete, remote: true do %>
+                      <i class="fas fa-trash" style="color: black;"></i>
+                    <% end %>
+                  <% end %>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+     <% end %>
+    <% end %>
+  </div>

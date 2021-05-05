@@ -8,7 +8,7 @@
           <div class="comment-entry">
             <%= matter_comment.comment %>
             <p><%= matter_comment.employee.name %>
-               <%= matter_comment.created_at %>
+               <%= l matter_comment.created_at %>
                 <% if matter_comment.employee == current_employee %>
                   <%= link_to member_matter_matter_comment_path(matter_comment.matter_id, matter_comment.id), method: :delete, remote: true do %>
                     <i class="fas fa-trash" style="color: black;"></i>

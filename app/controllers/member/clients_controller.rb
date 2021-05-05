@@ -23,6 +23,7 @@ class Member::ClientsController < ApplicationController
     @client_person = @client.client_people.build
     @client_people = ClientPerson.where(client_id: params[:id])
     @client_comment = ClientComment.new
+    @client_comments = @client.client_comments.order("created_at")
   end
 
   def edit

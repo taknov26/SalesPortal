@@ -49,20 +49,9 @@ table
            = f.submit "更新"
 
 
-h3 コメント
-p
-  |コメント件数
-  = @client.client_comments.count
-= form_with model: @client_comment, url: member_client_client_comments_path(@client), local:true do |f|
-  = f.text_area :comment, rows:'5', placeholder: "コメントをここに"
-  = f.submit "投稿"
-
+h3
 div
-- @client.client_comments.each do |client_comment|
-  p = client_comment.comment
-  p
-    |投稿者：
-    = client_comment.employee.name
-    = l client_comment.created_at
-    - if client_comment.employee == current_employee
-     = link_to "削除", member_client_client_comment_path(client_id: client_comment.client.id, id: client_comment.id), method: :delete
+  = render partial: 'member/client_comments/form', locals: { client: @client, client_comment: @client_comment }
+div
+  #client_comments_area
+    = render partial: 'member/client_comments/index', locals: { client_comments: @client_comments }
