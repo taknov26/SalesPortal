@@ -1,5 +1,6 @@
 class Member::MattersController < ApplicationController
   before_action :premise, only:[:new, :create, :edit, :update, :index]
+  require 'csv'
 
   def new
     @matter = Matter.new
@@ -38,6 +39,13 @@ class Member::MattersController < ApplicationController
 
   def index
     @matters = Matter.all
+    respond_to do |format|
+      format.html
+      format.json
+      format.csv do
+        matters_csv(@matters)
+      end
+    end
   end
 
   private
@@ -52,4 +60,26 @@ class Member::MattersController < ApplicationController
     params.require(:matter).permit(:employee_id, :client_company_id, :client_id, :client_person_id, :name, :price, :status, :fixed_date)
   end
 
+  def matters_csv(matters)
+    csv_data = CSV.generate(encoding: Encoding::SJIS, row_sep: "\r\n", force_quotes: true) do |csv|
+      csv << ["案件一覧"]
+      csv << []
+      column_names = %w(案件名 社内担当 クライアント会社名 クライアント クライアント担当 売上 売上確定日 ステータス)
+      csv << column_names
+      @matters.each do|matter|
+      column_values = [
+        matter.name,
+        matter.employee.name,
+        matter.client_company.name,
+        matter.client.branch_name,
+        matter.client_person.name,
+        matter.price,
+        matter.fixed_date,
+        matter.status,
+        ]
+        csv << column_values
+      end
+    end
+    send_data(csv_data, filename: "案件一覧.csv")
+  end
 end
