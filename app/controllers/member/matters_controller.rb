@@ -1,5 +1,6 @@
 class Member::MattersController < ApplicationController
   before_action :premise, only:[:new, :create, :edit, :update, :index]
+  before_action :set_q, only:[:index, :search]
   require 'csv'
 
   def new
@@ -38,7 +39,7 @@ class Member::MattersController < ApplicationController
   end
 
   def index
-    @matters = Matter.all
+    @matters = @q.result
     respond_to do |format|
       format.html
       format.json
@@ -48,7 +49,15 @@ class Member::MattersController < ApplicationController
     end
   end
 
+  def search
+    @results = @q.result
+  end
+
   private
+
+  def set_q
+    @q = Matter.ransack(params[:q])
+  end
 
   def premise
     @client_companies = ClientCompany.all

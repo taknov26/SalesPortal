@@ -1,7 +1,4 @@
-h3 受注案件一覧
-
-p = link_to "追加", new_member_matter_path
-p = link_to "CSVで出力する", member_matters_path(format: :csv)
+h3 検索結果
 
 table
   thead
@@ -30,3 +27,4 @@ table
           = matter.matter_comments.count
         td = link_to "詳細", member_matter_path(matter)
 
+= link_to "全件表示", member_matters_path

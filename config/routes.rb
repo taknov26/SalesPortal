@@ -22,6 +22,9 @@ Rails.application.routes.draw do
     resources :matters, except:[:destroy] do
       resources :costs, only:[:create, :destroy]
       resources :matter_comments, only:[:create, :destroy]
+        collection do
+          get 'search'
+        end
     end
   end
 end
