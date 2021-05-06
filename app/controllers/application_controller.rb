@@ -1,13 +1,12 @@
 class ApplicationController < ActionController::Base
+  before_action :authenticate_employee!,except: [:sign_in, :sign_up]
   before_action :configure_permitted_parameters, if: :devise_controller?
-  # def after_sign_in_path_for(resource)
-  #   if employee_signed_in?
-  #     root_path
-  #   else
-  #     new_employee_session_path
-  #   end
-  # end
-  # ログイン後の画面遷移設定
+
+  def after_sign_in_path_for(resource)
+    if employee_signed_in?
+      root_path
+    end
+  end
 
   def after_sign_out_path_for(resource)
       new_employee_session_path

@@ -24,4 +24,13 @@ class Member::Employees::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+  def reject_inactive_employee
+    @employee = Employee.find_by(email: params[:employee][:email])
+    if @employee
+      if @employee.valid_password?(params[:employee][:password]) && !@employee.is_active
+        redirect_to new_employee_session_path, notice: "退職済みです"
+      end
+    end
+  end
+
 end
