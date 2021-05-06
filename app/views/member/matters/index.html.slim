@@ -13,7 +13,7 @@ table
       th = sort_link(@q, :price, "売上(税抜)")
       th 粗利
       th ステータス
-      th コメント数
+      th コメント
       th colspan="1"
   tbody
     - @matters.each do |matter|
@@ -26,7 +26,7 @@ table
         td = number_to_currency(matter.price - matter.costs.all.sum(:item_price))
         td = matter.status
         td
-          | コメント：
           = matter.matter_comments.count
+          |件
         td = link_to "詳細", member_matter_path(matter)
 

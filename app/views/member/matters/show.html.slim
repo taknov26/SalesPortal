@@ -24,7 +24,8 @@ table
       tr
         td ステータス
         td = @matter.status
-span = link_to "編集する", edit_member_matter_path(@matter)
+- if @employee == current_employee
+  span = link_to "編集する", edit_member_matter_path(@matter)
 
 h3 仕入れ原価
 = form_with model: @cost, url: member_matter_costs_path(@matter), local:true do |f|

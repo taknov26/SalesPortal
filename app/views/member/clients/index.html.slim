@@ -9,6 +9,7 @@ table
       th 部署名
       th 所在地
       th 連絡先
+      th コメント
       th colspan="1"
   tbody
     - @clients.each do |client|
@@ -17,5 +18,8 @@ table
         td = client.branch_name
         td = client.address
         td = client.telephone_number
+        td
+          = client.client_comments.count
+          |件
         td = link_to "詳細", member_client_path(client)
 
