@@ -1,4 +1,5 @@
 class Manager::EmployeesController < ApplicationController
+  before_action :no_authority
 
   def index
     @employees = Employee.all
@@ -18,4 +19,10 @@ class Manager::EmployeesController < ApplicationController
     params.require(:employee).permit(:is_active, :role)
   end
 
+  def no_authority
+   @employee = current_employee
+   if @employee.role != 99
+     redirect_to root_path, notice: "管理者ページのアクセス権限がありません。"
+   end
+  end
 end

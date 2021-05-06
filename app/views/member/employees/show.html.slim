@@ -25,5 +25,5 @@ table
     tr
       td メールアドレス
       td = @employee.email
-
-p = link_to "編集する", edit_member_employee_path(@employee)
+- if @employee == current_employee
+  p = link_to "編集する", edit_member_employee_path(@employee)
