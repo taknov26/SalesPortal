@@ -2,6 +2,7 @@ class Member::EmployeesController < ApplicationController
 
   def show
     @employee = Employee.find(params[:id])
+    @matters = Matter.where(employee_id: params[:id])
   end
 
   def index

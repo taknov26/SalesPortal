@@ -1,5 +1,5 @@
 h3 クライアント会社名登録／一覧
-
+= render 'layouts/error_messages', model: @client_company
 = form_with model: @client_company, url: manager_client_companies_path, local:true do |f|
   table
     tbody

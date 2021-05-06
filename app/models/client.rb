@@ -4,8 +4,8 @@ class Client < ApplicationRecord
   has_many :client_people
   belongs_to :client_company
 
-  validates :branch_name, presense: true, uniqueness: true
-  validates :telephone_number, presense: true
-  validates :address, presense: true
+  validates :branch_name, presence: true, uniqueness: true
+  validates :telephone_number, presence: true
+  validates :address, presence: true
 
 end

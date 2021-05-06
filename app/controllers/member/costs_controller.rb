@@ -6,7 +6,7 @@ class Member::CostsController < ApplicationController
     if @cost.save
       redirect_to member_matter_path(@cost.matter), notice: "原価を1件登録しました。"
     else
-      render "matters/show"
+      redirect_to member_matter_path(@cost.matter), notice: "原価の入力に誤りがあります。"
     end
   end
 

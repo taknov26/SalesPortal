@@ -1,0 +1,21 @@
+ja:
+  activerecord:
+    models:
+      matter: 案件
+      client_company: クライアント企業名
+      client: クライアント
+    attributes:
+      matter:
+        name: 案件名
+        client_company: クライアント企業名
+        client: クライアント
+        client_person: 担当者
+        price: 売上
+        fixed_date: 売上確定日
+      client_company:
+        name: クライアント企業名
+      client:
+        client_company: クライアント企業名
+        branch_name: 支社・支店
+        address: 所在地
+        telephone_number: 電話番号

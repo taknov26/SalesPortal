@@ -7,5 +7,10 @@ class Matter < ApplicationRecord
   has_many :matter_comments
 
   enum status: { "見積り": 0, "受注": 1, "納品済": 2, "請求済": 3, "確定": 4 }
+
+  validates :name, presence: true
+  validates :price, numericality: { only_integer: true }, presence: true
+  validates :fixed_date, presence: true
+
 end
 

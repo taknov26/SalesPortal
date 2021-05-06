@@ -1,5 +1,5 @@
 h3 クライアント会社名編集
-
+= render 'layouts/error_messages', model: @client_company
 = form_with model: @client_company, url: manager_client_company_path, local:true do |f|
   table
     tbody

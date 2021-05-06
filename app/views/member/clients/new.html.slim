@@ -1,6 +1,6 @@
 h3 クライアント登録
-
-= form_with model: @client, url: member_clients_path, method: :post, local:true do |f|
+= render 'layouts/error_messages', model: @client
+= form_with model: @client, url: member_clients_path, local:true do |f|
   table
     tbody
       tr

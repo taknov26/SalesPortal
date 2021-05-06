@@ -1,5 +1,5 @@
 h3 登録情報編集
-
+= render 'layouts/error_messages', model: @employee
 = form_with model: @employee, url: member_employee_path, method: :patch, local:true do |f|
   table
     tbody

@@ -6,7 +6,7 @@ class Member::ClientPeopleController < ApplicationController
     if @client_person.save
       redirect_to member_client_path(@client), notice: "クライアント担当者を1名追加しました。"
     else
-      render "clients/show"
+      redirect_to member_client_path(@client), notice: "クライアント担当者の登録に失敗しました。"
     end
   end
 

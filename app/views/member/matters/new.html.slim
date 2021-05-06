@@ -1,5 +1,5 @@
 h3 受注案件登録
-
+= render 'layouts/error_messages', model: @matter
 = form_with model: @matter, url: member_matters_path, local:true do |f|
   table
     tbody

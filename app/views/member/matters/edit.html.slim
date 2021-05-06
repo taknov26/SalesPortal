@@ -1,5 +1,5 @@
 h3 案件情報編集
-
+= render 'layouts/error_messages', model: @matter
 = form_with model: @matter, url: member_matter_path(@matter), local:true do |f|
   table
     tbody
