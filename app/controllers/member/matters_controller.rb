@@ -1,6 +1,8 @@
 class Member::MattersController < ApplicationController
   before_action :premise, only:[:new, :create, :edit, :update, :index]
   before_action :set_q, only:[:index, :search]
+  before_action :ensure_current_employee, {only: [:edit, :update]}
+
   require 'csv'
 
   def new
@@ -62,6 +64,14 @@ class Member::MattersController < ApplicationController
   end
 
   private
+
+  def ensure_current_employee
+    @matter = Matter.find(params[:id])
+    @employee = @matter.employee
+    if current_employee.id != @employee.id
+      redirect_to member_matter_path(@matter), notice: "アクセス権限がありません"
+    end
+  end
 
   def set_q
     @q = Matter.ransack(params[:q])
