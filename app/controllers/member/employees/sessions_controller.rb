@@ -2,7 +2,11 @@
 
 class Member::Employees::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
-
+  def guest_sign_in
+    employee = Employee.guest
+    sign_in employee
+    redirect_to root_path, notice: "ゲストユーザーしてログインしました。"
+  end
   # GET /resource/sign_in
   # def new
   #   super

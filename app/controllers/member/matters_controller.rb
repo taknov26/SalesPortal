@@ -53,6 +53,14 @@ class Member::MattersController < ApplicationController
     @results = @q.result
   end
 
+  def get_clients
+    render partial: "select_client", locals: {client_company_id: params[:client_company_id]}
+  end
+
+  def get_client_people
+    render partial: "select_client_person", locals: {client_id: params[:client_id]}
+  end
+
   private
 
   def set_q

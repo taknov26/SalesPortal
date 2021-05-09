@@ -17,3 +17,5 @@
 <% end %>
 
 <p>まだ登録していない方は<%= link_to "こちら", new_employee_registration_path %></p>
+
+<p><%= link_to 'ゲストログイン（閲覧用）', employees_guest_sign_in_path, method: :post %></p>

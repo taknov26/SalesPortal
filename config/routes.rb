@@ -5,6 +5,10 @@ Rails.application.routes.draw do
     registrations:  'member/employees/registrations'
   }
 
+  devise_scope :employee do
+    post "employees/guest_sign_in", to: "member/employees/sessions#guest_sign_in"
+  end
+
   root :to => 'member/homes#top'
   get "manager/top" =>"manager/homes#top"
 
@@ -20,11 +24,16 @@ Rails.application.routes.draw do
       resources :client_comments, only:[:create, :destroy]
     end
     resources :matters, except:[:destroy] do
+      collection do
+        get "get_clients"
+        get "get_client_people"
+      end
       resources :costs, only:[:create, :destroy]
-      resources :matter_comments, only:[:create, :destroy]
+      resources :matter_comments, only:[:create, :destroy] do
         collection do
           get 'search'
         end
+      end
     end
   end
 end
