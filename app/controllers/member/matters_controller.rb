@@ -56,11 +56,13 @@ class Member::MattersController < ApplicationController
   end
 
   def get_clients
-    render partial: "select_client", locals: {client_company_id: params[:client_company_id]}
+    @clients = Client.where(client_company_id: params[:client_company_id])
+    render partial: "select_client"
   end
 
   def get_client_people
-    render partial: "select_client_person", locals: {client_id: params[:client_id]}
+    @client_people = ClientPerson.where(client_id: params[:client_id])
+    render partial: "select_client_person"
   end
 
   private

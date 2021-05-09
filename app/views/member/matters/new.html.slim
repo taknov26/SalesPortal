@@ -1,20 +1,20 @@
 h3 受注案件登録
 = render 'layouts/error_messages', model: @matter
-= form_with model: @matter, url: member_matters_path do |f|
+= form_with model: @matter, url: member_matters_path, local:true do |f|
   table
     tbody
       tr
         td 案件名
         td = f.text_field :name
       tr
-        td.client-company-area クライアント企業名
+        td クライアント企業名
         td = f.collection_select :client_company_id, @client_companies, :id, :name, prompt: "--選択してください--"
       tr
-        td.client-area クライアント
-        td = render partial: "select_client", locals: { client_company_id: ClientCompany.first.id }
+        td クライアント
+        td#client-area == render partial: "select_client"
       tr
-        td.client-person-area 担当者
-        td = render partial: "select_client_person", locals: { client_id: Client.first.id }
+        td 担当者
+        td#client-person-area == render partial: "select_client_person"
       tr
         td 売上(税抜)
         td = f.text_field :price
@@ -25,6 +25,3 @@ h3 受注案件登録
         td 売上確定日
         td = f.date_field :fixed_date
   = f.submit "登録"
-
-
-/f.collection_select :client_id, @clients, :id, :branch_name, prompt: "--選択してください--"

@@ -1,1 +1,1 @@
-<%= f.collection_select :client_person_id, ClientPerson.where(client_id: client_id), :id, :name, prompt: "--選択してください--" %>
+<%= collection_select :matter, :client_person_id, @client_people, :id, :name, prompt: "--選択してください--" %>

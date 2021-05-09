@@ -10,7 +10,9 @@ $(document).on "change", "#matter_client_company_id", ->
       client_company_id: $(this).val()
     }
   ).done (data) ->
-    $("client-area").html(data)
+    $("#client-area").html(data)
+    # 1、ボックスごとnone
+    # 2、企業名選ばれたら、データ持ってきて、表示
 
 $(document).on "change", "#matter_client_id", ->
   $.ajax(
@@ -20,4 +22,4 @@ $(document).on "change", "#matter_client_id", ->
       client_id: $(this).val()
     }
   ).done (data) ->
-    $("client-person-area").html(data)
+    $("#client-person-area").html(data)

@@ -24,7 +24,7 @@ table
       tr
         td ステータス
         td = @matter.status
-- if @employee == current_employee
+- if @matter.employee == current_employee
   span = link_to "編集する", edit_member_matter_path(@matter)
 
 h3 仕入れ原価
