@@ -24,6 +24,29 @@
 
 $(function(){
   $('#calendar').fullCalendar({
+  //   eventSources : [
+  //   {
+  //     googleCalendarApiKey: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+  //     googleCalendarId: 'japanese__ja@holiday.calendar.google.com',
+
+  //     rendering: 'background',
+  //     color:"#ffd0d0"
+  //   }
+  // ],
     events: "member/matters.json",
+    titleFormat: "スケジュール　YYYY年　M月",
+    dayNamesShort: ["日", "月", "火", "水", "木", "金", "土"],
+    header: {
+      left: "",
+      center: "title",
+      right: "today prev,next"
+    },
+    eventColor: "#283593",
+    eventTextColor: "#FBE9E7",
+    eventRender: function(event, element) {
+      element.css("font-size", "0.8em");
+      element.css("padding", "5px");
+    }
   });
 });
+// #B39DDB
