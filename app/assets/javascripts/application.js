@@ -41,8 +41,8 @@ $(function(){
       center: "title",
       right: "today prev,next"
     },
-    eventColor: "#283593",
-    eventTextColor: "#FBE9E7",
+    eventColor: "#26A69A",
+    eventTextColor: "#FFFFFF",
     eventRender: function(event, element) {
       element.css("font-size", "0.8em");
       element.css("padding", "5px");

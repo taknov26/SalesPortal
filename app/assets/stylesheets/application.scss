@@ -18,11 +18,11 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 body {
-    background-color:#FBE9E7;
+    background-color:#fffff9;
 }
 
 .navbar {
-    background-color: #283593;
+    background-color: #4A148C;
 }
 
 
@@ -36,11 +36,18 @@ h3 {
 }
 
 footer {
-    background-color: #283593;
+    background-color: #4A148C;
     margin-top: 10px;
 }
 
 .footer_text{
-    color: #FBE9E7;
+    color: #FFFFFF;
     line-height: 50px;
+}
+
+td.fc-sat {
+    background-color: #eaf4ff;
+}
+td.fc-sun {
+    background-color: #ffeaea;
 }
