@@ -10,18 +10,25 @@ html
     = javascript_include_tag 'application'
   body
     header
-      - if employee_signed_in?
-        ul
-          li = link_to "マイページ", root_path
-          li = link_to "案件一覧", member_matters_path
-          li = link_to "クライアント一覧", member_clients_path
-          li = link_to "メンバー", member_employees_path
-          li = link_to "ログアウト", destroy_employee_session_path, method: :delete
-        - if current_employee.role == 99
-          li = link_to "管理者", manager_top_path
-    .notice = notice
-    .alert = alert
-
-    = yield
+      nav.navbar.navbar-expand-lg
+        div.container
+          a.navbar-brand href="/"
+            = image_tag("logo-transparent.png")
+            - if employee_signed_in?
+                ul
+                  li = link_to "マイページ", root_path
+                  li = link_to "案件一覧", member_matters_path
+                  li = link_to "クライアント一覧", member_clients_path
+                  li = link_to "メンバー", member_employees_path
+                  li = link_to "ログアウト", destroy_employee_session_path, method: :delete
+                - if current_employee.role == 99
+                  li = link_to "管理者", manager_top_path
+    div.container.mb-5
+      div.notice.col = notice
+      div.alert.col = alert
+      = yield
     footer
-      p made by taknov26
+      div.container
+        div.row
+          div.mx-auto.footer_text
+            |made by taknov26

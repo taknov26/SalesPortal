@@ -17,3 +17,30 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+body {
+    background-color:#FBE9E7;
+}
+
+.navbar {
+    background-color: #283593;
+}
+
+
+
+.notice {
+    color: #98fb98;
+}
+
+h3 {
+    font-size: 150%;
+    font-weight: bold;
+}
+
+footer {
+    background-color: #283593;
+    margin-top : 10px;
+}
+
+.footer_text{
+    color: #FBE9E7;
+}
