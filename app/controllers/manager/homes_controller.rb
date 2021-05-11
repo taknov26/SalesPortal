@@ -5,11 +5,12 @@ class Manager::HomesController < ApplicationController
   end
 
  private
- def no_authority
-   @employee = current_employee
-   if @employee.role != 99
-     redirect_to root_path, notice: "管理者ページのアクセス権限がありません。"
-   end
- end
+def no_authority
+  if current_employee.role != 99
+    redirect_to root_path, notice: "管理者ページのアクセス権限がありません。"
+  elsif current_employee.role == 99
+    redirect_to manager_top_path
+  end
+end
 
 end

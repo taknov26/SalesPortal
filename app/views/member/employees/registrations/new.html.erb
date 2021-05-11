@@ -1,49 +1,58 @@
-<h3>新規登録</h3>
+<%= render 'layouts/error2_messages', model: @employee %>
+<div class="container mx-auto">
+  <div class="row">
+    <div class="col-5 mx-auto">
+      <h3>新規登録</h3>
 
-<%= form_with model: @employee, url: employee_registration_path, local:true do |f| %>
-  <%= render "member/employees/shared/error_messages", resource: resource %>
+      <%= form_with model: @employee, url: employee_registration_path, local:true do |f| %>
 
-  <table>
-    <tbody>
-      <tr>
-        <td>名前</td>
-        <td><%= f.text_field :name %></td>
-      </tr>
-      <tr>
-        <td>名前カナ</td>
-        <td><%= f.text_field :name_kana %></td>
-      </tr>
-      <tr>
-        <td>電話番号</td>
-        <td><%= f.text_field :telephone_number %></td>
-      </tr>
-      <tr>
-        <td>内線</td>
-        <td><%= f.text_field :phone_extension %></td>
-      </tr>
-      <tr>
-        <td>所属</td>
-        <td><%= f.text_field :belonging %></td>
-      </tr>
-      <tr>
-        <td>役職</td>
-        <td><%= f.text_field :position %></td>
-      </tr>
-      <tr>
-        <td>メールアドレス</td>
-        <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
-      </tr>
-      <tr>
-        <td>パスワード(6文字以上)</td>
-        <td><%= f.password_field :password, autocomplete: "new-password" %></td>
-      </tr>
-      <tr>
-        <td>パスワード確認用</td>
-        <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
-      </tr>
-    </tbody>
-  </table>
-<%= f.submit "新規作成" %>
-<% end %>
-
-<p>登録済みの方は<%= link_to "こちら", new_employee_session_path %></p>
+        <table>
+          <tbody>
+            <tr>
+              <td>名前</td>
+              <td><%= f.text_field :name, class: "form-control" %></td>
+            </tr>
+            <tr>
+              <td>名前カナ</td>
+              <td><%= f.text_field :name_kana, class: "form-control" %></td>
+            </tr>
+            <tr>
+              <td>電話番号</td>
+              <td><%= f.text_field :telephone_number, class: "form-control" %></td>
+            </tr>
+            <tr>
+              <td>内線</td>
+              <td><%= f.text_field :phone_extension, class: "form-control" %></td>
+            </tr>
+            <tr>
+              <td>所属</td>
+              <td><%= f.text_field :belonging, class: "form-control" %></td>
+            </tr>
+            <tr>
+              <td>役職</td>
+              <td><%= f.text_field :position, class: "form-control" %></td>
+            </tr>
+            <tr>
+              <td>メールアドレス</td>
+              <td><%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %></td>
+            </tr>
+            <tr>
+              <td>パスワード(6文字以上)</td>
+              <td><%= f.password_field :password, autocomplete: "new-password", class: "form-control" %></td>
+            </tr>
+            <tr>
+              <td>パスワード確認</td>
+              <td><%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %></td>
+            </tr>
+          </tbody>
+        </table>
+      <%= f.submit "新規作成", class: "btn btn-info mt-3 btn-block btn-sm" %>
+    <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-5 mx-auto mt-3">
+      <p>登録済みの方は<%= link_to "こちら", new_employee_session_path %></p>
+    </div>
+  </div>
+</div>
