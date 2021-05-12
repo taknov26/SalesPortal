@@ -24,15 +24,6 @@
 
 $(function(){
   $('#calendar').fullCalendar({
-  //   eventSources : [
-  //   {
-  //     googleCalendarApiKey: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-  //     googleCalendarId: 'japanese__ja@holiday.calendar.google.com',
-
-  //     rendering: 'background',
-  //     color:"#ffd0d0"
-  //   }
-  // ],
     events: "member/matters.json",
     titleFormat: "スケジュール　YYYY年　M月",
     dayNamesShort: ["日", "月", "火", "水", "木", "金", "土"],

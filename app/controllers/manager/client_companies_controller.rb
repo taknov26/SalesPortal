@@ -1,5 +1,5 @@
 class Manager::ClientCompaniesController < ApplicationController
-  # before_action :no_authority
+  before_action :no_authority
 
   def index
     @client_companies = ClientCompany.all
@@ -27,12 +27,12 @@ class Manager::ClientCompaniesController < ApplicationController
     params.require(:client_company).permit(:name)
   end
 
-  # def no_authority
-  # @employee = current_employee
-  # if @employee.role != 99
-  #   redirect_to root_path, notice: "管理者ページのアクセス権限がありません。"
-  # end
-  # end
+  def no_authority
+    @employee = current_employee
+    if @employee.role != "99"
+      redirect_to root_path, notice: "管理者ページのアクセス権限がありません。"
+    end
+  end
 
 
 end
