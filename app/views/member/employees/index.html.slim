@@ -1,19 +1,24 @@
-h3 社員一覧
+div.container
+  div.row
+    div.col-lg-10.col-sm-12.mx-auto
+      h3 社員一覧
 
-table
-  thead
-    tr
-      th アイコン
-      th 氏名
-      th 所属
-      th 役職
-      th colspan="1"
-  tbody
-    - @employees.each do |employee|
-      tr
-        td = attachment_image_tag employee, :image, format:'jpeg', fallback: "m_e_others_501.png", size: "40x40"
-        td = employee.name
-        td = employee.belonging
-        td = employee.position
-        td = link_to "詳細", member_employee_path(employee)
+      table.table.table-hover.table-bordered.mt-3
+        thead.table-info
+          tr
+            th アイコン
+            th 氏名
+            th 所属
+            th 役職
+            th 担当案件数
+            th colspan="1"
+        tbody
+          - @employees.each do |employee|
+            tr
+              td = attachment_image_tag employee, :image, format:'jpeg', fallback: "m_e_others_501.png", size: "40x40"
+              td = employee.name
+              td = employee.belonging
+              td = employee.position
+              td = employee.matters.count
+              td = link_to "詳細", member_employee_path(employee)
 

@@ -25,7 +25,6 @@ html
               li.nav-item = link_to "メンバー", member_employees_path, class: 'nav-link text-light'
               li.nav-item = link_to "ログアウト", destroy_employee_session_path, method: :delete, class: 'nav-link text-light'
               li.nav-item = link_to "管理者", manager_top_path, class: 'nav-link text-light'
-    div.container.mb-5
       div.notice = notice
       div.alert = alert
       = yield
