@@ -1,8 +1,12 @@
-h3 クライアント会社名編集
-= render 'layouts/error_messages', model: @client_company
-= form_with model: @client_company, url: manager_client_company_path, local:true do |f|
-  table
-    tbody
-      tr
-        th = f.text_field :name
-        th = f.submit "更新"
+div.container
+  div.row
+    div.col-lg-5.mx-auto
+      h3 クライアント会社名編集
+      = render 'layouts/error_messages', model: @client_company
+      = form_with model: @client_company, url: manager_client_company_path, local:true do |f|
+        table.table.table-borderless.table-sm
+          tbody
+            tr
+              th = f.text_field :name, class: "form-control"
+            tr
+              th = f.submit "更新", class: "btn btn-info mt-3 btn-block btn-sm"

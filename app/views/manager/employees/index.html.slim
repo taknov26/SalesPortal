@@ -1,26 +1,28 @@
-h3 社員一覧
+div.container
+  div.row
+    div.col-lg-10.col-sm-12.mx-auto
+      h3 社員一覧
 
-table
-  thead
-    tr
-      th アイコン
-      th 氏名
-      th 所属
-      th 役職
-      th ステータス
-      th 権限
-      th colspan="1"
-  tbody
-    - @employees.each do |employee|
-      tr
-        td = attachment_image_tag employee, :image, format:'jpeg', fallback: "m_e_others_501.png", size: "40x40"
-        td = employee.name
-        td = employee.belonging
-        td = employee.position
-        td = form_with model: employee, url: manager_employee_path(employee), local:true do |f|
-           = f.select :is_active, [["在職", "true"], ["退職", "false"]]
-           = f.submit "更新"
-        td = form_with model: employee, url: manager_employee_path(employee), local:true do |f|
-           = f.select :role, [["一般", "1"], ["管理職", "99"]]
-           = f.submit "更新"
+      table.table.table-hover.table-bordered.mt-3
+        thead.table-info
+          tr
+            th アイコン
+            th 氏名
+            th 所属
+            th 役職
+            th ステータス
+            th 権限
+        tbody
+          - @employees.each do |employee|
+            tr
+              td = attachment_image_tag employee, :image, format:'jpeg', fallback: "m_e_others_501.png", size: "40x40"
+              td = employee.name
+              td = employee.belonging
+              td = employee.position
+              td = form_with model: employee, url: manager_employee_path(employee), local:true do |f|
+                 = f.select :is_active, [["在職", "true"], ["退職", "false"]]
+                 = f.submit "更新", class: "btn btn-outline-info btn-sm"
+              td = form_with model: employee, url: manager_employee_path(employee), local:true do |f|
+                 = f.select :role, [["一般", "1"], ["管理職", "99"]]
+                 = f.submit "更新", class: "btn btn-outline-info btn-sm"
 
