@@ -1,27 +1,30 @@
-h3 案件情報編集
-= render 'layouts/error_messages', model: @matter
-= form_with model: @matter, url: member_matter_path(@matter), local:true do |f|
-  table
-    tbody
-      tr
-        td 案件名
-        td = f.text_field :name
-      tr
-        td クライアント企業名
-        td = f.collection_select :client_company_id, @client_companies, :id, :name, prompt: "--選択してください--"
-      tr
-        td クライアント
-        td = f.collection_select :client_id, @clients, :id, :branch_name, prompt: "--選択してください--"
-      tr
-        td 担当者
-        td = f.collection_select :client_person_id, @client_people, :id, :name, prompt: "--選択してください--"
-      tr
-        td 売上(税抜)
-        td = f.text_field :price
-      tr
-        td ステータス
-        td = f.select :status, [["見積り"], ["受注"], ["納品済"], ["請求済"], ["確定"]]
-      tr
-        td 売上確定日
-        td = f.date_field :fixed_date
-  = f.submit "更新"
+div.container
+  div.row
+    div.col-lg-5.mx-auto
+      h3 案件情報編集
+      = render 'layouts/error_messages', model: @matter
+      = form_with model: @matter, url: member_matter_path(@matter), local:true do |f|
+        table.table.table-borderless.table-sm
+          tbody
+            tr
+              td 案件名
+              td = f.text_field :name, class: "form-control"
+            tr
+              td クライアント企業名
+              td = f.collection_select :client_company_id, @client_companies, :id, :name, prompt: "--選択してください--", class: "form-control"
+            tr
+              td クライアント
+              td = f.collection_select :client_id, @clients, :id, :branch_name, prompt: "--選択してください--", class: "form-control"
+            tr
+              td 担当者
+              td = f.collection_select :client_person_id, @client_people, :id, :name, prompt: "--選択してください--", class: "form-control"
+            tr
+              td 売上(税抜)
+              td = f.text_field :price, class: "form-control"
+            tr
+              td ステータス
+              td = f.select :status, [["見積り"], ["受注"], ["納品済"], ["請求済"], ["確定"]], class: "form-control"
+            tr
+              td 売上確定日
+              td = f.date_field :fixed_date, class: "form-control"
+        = f.submit "更新", class: "btn btn-info mt-3 btn-block btn-sm"

@@ -1,32 +1,37 @@
-h3 受注案件一覧
+div.container
+  div.row
+    div.col-12
+      h3 受注案件一覧
+      div.row
+        div.col.mb-3.mt-3
+          span = link_to "クライアント登録", new_member_client_path, class: "btn btn-outline-info btn-sm ml-3"
+          span = link_to "案件追加", new_member_matter_path, class: "btn btn-outline-info btn-sm ml-3"
+          span = link_to "CSV出力", member_matters_path(format: :csv), class: "btn btn-outline-info btn-sm ml-3"
 
-p = link_to "追加", new_member_matter_path
-p = link_to "CSVで出力する", member_matters_path(format: :csv)
-
-table
-  thead
-    tr
-      th 案件名
-      th クライアント会社名
-      th = sort_link(@q, :employee_id, "担当者")
-      th = sort_link(@q, :fixed_date, "売上確定日")
-      th = sort_link(@q, :price, "売上(税抜)")
-      th 粗利
-      th ステータス
-      th コメント
-      th colspan="1"
-  tbody
-    - @matters.each do |matter|
-      tr
-        td = matter.name
-        td = matter.client_company.name
-        td = matter.employee.name
-        td = matter.fixed_date
-        td = number_to_currency(matter.price)
-        td = number_to_currency(matter.price - matter.costs.all.sum(:item_price))
-        td = matter.status
-        td
-          = matter.matter_comments.count
-          |件
-        td = link_to "詳細", member_matter_path(matter)
+      table.table.table-hover.table-bordered
+        thead
+          tr.table-info
+            th 案件名
+            th クライアント会社名
+            th = sort_link(@q, :employee_id, "担当者")
+            th = sort_link(@q, :fixed_date, "売上確定日")
+            th = sort_link(@q, :price, "売上(税抜)")
+            th 粗利
+            th ステータス
+            th コメント
+            th colspan="1"
+        tbody
+          - @matters.each do |matter|
+            tr
+              td = matter.name
+              td = matter.client_company.name
+              td = matter.employee.name
+              td = matter.fixed_date
+              td = number_to_currency(matter.price)
+              td = number_to_currency(matter.price - matter.costs.all.sum(:item_price))
+              td = matter.status
+              td
+                = matter.matter_comments.count
+                |件
+              td = link_to "詳細", member_matter_path(matter)
 

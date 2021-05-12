@@ -1,25 +1,29 @@
-h3 クライアント一覧
-
-p = link_to "追加", new_member_client_path
-
-table
-  thead
-    tr
-      th 企業名
-      th 部署名
-      th 所在地
-      th 連絡先
-      th コメント
-      th colspan="1"
-  tbody
-    - @clients.each do |client|
-      tr
-        td = client.client_company.name
-        td = client.branch_name
-        td = client.address
-        td = client.telephone_number
-        td
-          = client.client_comments.count
-          |件
-        td = link_to "詳細", member_client_path(client)
+div.container
+  div.row
+    div.col-12
+      h3 クライアント一覧
+      div.row
+        div.col.mb-3.mt-3
+          span = link_to "クライアント登録", new_member_client_path, class: "btn btn-outline-info btn-sm ml-3"
+          span = link_to "案件追加", new_member_matter_path, class: "btn btn-outline-info btn-sm ml-3"
+      table.table.table-hover.table-bordered
+        thead
+          tr.table-info
+            th 企業名
+            th 部署名
+            th 所在地
+            th 連絡先
+            th コメント
+            th colspan="1"
+        tbody
+          - @clients.each do |client|
+            tr
+              td = client.client_company.name
+              td = client.branch_name
+              td = client.address
+              td = client.telephone_number
+              td
+                = client.client_comments.count
+                |件
+              td = link_to "詳細", member_client_path(client)
 

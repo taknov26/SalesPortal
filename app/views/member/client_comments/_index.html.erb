@@ -1,5 +1,5 @@
-<p>コメント件数: <%= client_comments.count %></p>
-<h6 class="more" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">もっと見る>></h6>
+<span class="mt-3">コメント件数: <%= client_comments.count %></span>
+<span class="more ml-3" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">すべて表示>></span>
 <% client_comments.first(3).each do |client_comment| %>
   <% unless client_comment.id.nil? %>
     <div class="comment-container">

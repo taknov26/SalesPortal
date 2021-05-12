@@ -1,18 +1,21 @@
-h3 クライアント登録
-= render 'layouts/error_messages', model: @client
-= form_with model: @client, url: member_clients_path, local:true do |f|
-  table
-    tbody
-      tr
-        td 企業名
-        td = f.collection_select :client_company_id, @client_companies, :id, :name, prompt: "--選択してください--"
-      tr
-        td 支社・支店
-        td = f.text_field :branch_name
-      tr
-        td 所在地
-        td = f.text_field :address
-      tr
-        td 電話番号
-        td = f.text_field :telephone_number
-  = f.submit "登録"
+div.container
+  div.row
+    div.col-lg-5.mx-auto
+      h3 クライアント登録
+      = render 'layouts/error_messages', model: @client
+      = form_with model: @client, url: member_clients_path, local:true do |f|
+        table.table.table-borderless.table-sm
+          tbody
+            tr
+              td 企業名
+              td = f.collection_select :client_company_id, @client_companies, :id, :name, prompt: "--選択してください--", class: "form-control"
+            tr
+              td 支社・支店
+              td = f.text_field :branch_name, class: "form-control"
+            tr
+              td 所在地
+              td = f.text_field :address, class: "form-control"
+            tr
+              td 電話番号
+              td = f.text_field :telephone_number, class: "form-control"
+        = f.submit "登録", class: "btn btn-info mt-3 btn-block btn-sm"

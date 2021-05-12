@@ -1,70 +1,73 @@
-h3 受注案件詳細
+div.container
+  div.row
+    div.col-lg-6
+      h3 受注案件詳細
+      table.table.table-borderless.table-sm
+        tbody
+            tr
+              td 案件名
+              td = @matter.name
+            tr
+              td クライアント
+              td
+                = @matter.client_company.name
+                = @matter.client.branch_name
+                br
+                = @matter.client_person.name
+            tr
+              td 担当者
+              td = @matter.employee.name
+            tr
+              td 登録日
+              td = l @matter.created_at
+            tr
+              td 売上確定日
+              td = @matter.fixed_date
+            tr
+              td ステータス
+              td = @matter.status
+      - if @matter.employee == current_employee
+        span = link_to "編集する", edit_member_matter_path(@matter), class: "btn btn-info mb-3 btn-block"
 
-table
-  tbody
-      tr
-        td 案件名
-        td = @matter.name
-      tr
-        td クライアント
-        td
-          = @matter.client_company.name
-          = @matter.client.branch_name
-          br
-          = @matter.client_person.name
-      tr
-        td 担当者
-        td = @matter.employee.name
-      tr
-        td 登録日
-        td = l @matter.created_at
-      tr
-        td 売上確定日
-        td = @matter.fixed_date
-      tr
-        td ステータス
-        td = @matter.status
-- if @matter.employee == current_employee
-  span = link_to "編集する", edit_member_matter_path(@matter)
+      h3 仕入れ原価
+      = form_with model: @cost, url: member_matter_costs_path(@matter), local:true do |f|
 
-h3 仕入れ原価
-= form_with model: @cost, url: member_matter_costs_path(@matter), local:true do |f|
+        table.table.table-bordered.table-sm.table-hover
+          thead
+            tr
+              th 費目
+              th 原価
+              th colspan="1"
+          tbody
+              tr
+                td = f.text_field :item, class: "form-control"
+                td = f.text_field :item_price, class: "form-control"
+                td = f.submit "登録", class: "btn btn-outline-info btn-sm"
+          tbody
+            - @costs.each do |cost|
+              tr
+                td = cost.item
+                td = number_to_currency(cost.item_price)
+                td = link_to "削除", member_matter_cost_path(matter_id:cost.matter_id, id:cost.id), method: :delete
+    
+    div.col-lg-6
+      h3 売上
+      table.table.table-sm
+        tbody
+          tr
+            td 売上
+            td = number_to_currency(@matter.price)
+          tr
+            td 仕入れ原価
+            td = number_to_currency(@matter.costs.all.sum(:item_price))
+          tr
+            td 粗利
+            td = number_to_currency(@matter.price.to_i - @matter.costs.all.sum(:item_price).to_i)
 
-  table
-    thead
-      tr
-        th 費目
-        th 原価
-        th colspan="1"
-    tbody
-        tr
-          td = f.text_field :item
-          td = f.text_field :item_price
-          td = f.submit "登録"
-    tbody
-      - @costs.each do |cost|
-        tr
-          td = cost.item
-          td = number_to_currency(cost.item_price)
-          td = link_to "削除", member_matter_cost_path(matter_id:cost.matter_id, id:cost.id), method: :delete
-
-h3 売上
-table
-  tbody
-    tr
-      td 売上
-      td = number_to_currency(@matter.price)
-    tr
-      td 仕入れ原価
-      td = number_to_currency(@matter.costs.all.sum(:item_price))
-    tr
-      td 粗利
-      td = number_to_currency(@matter.price.to_i - @matter.costs.all.sum(:item_price).to_i)
-
-h3 コメント
-div
-  = render partial: 'member/matter_comments/form', locals: { matter: @matter, matter_comment: @matter_comment }
-div
-  #comments_area
-    = render partial: 'member/matter_comments/index', locals: {matter_comments: @matter_comments}
+      h3 コメント
+      div
+        = render partial: 'member/matter_comments/form', locals: { matter: @matter, matter_comment: @matter_comment }
+      div.mt-3
+        #comments_area
+          = render partial: 'member/matter_comments/index', locals: {matter_comments: @matter_comments}
 

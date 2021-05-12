@@ -1,57 +1,61 @@
-h3 クライアント詳細画面
+div.container
+  div.row
+    div.col-lg-4
+      h3 クライアント詳細画面
+      table.table.table-borderless.table-sm
+        tbody
+          tr
+            td 会社名
+            td = @client.client_company.name
+          tr
+            td 支社・支店
+            td = @client.branch_name
+          tr
+            td 所在地
+            td = @client.address
+          tr
+            td 連絡先
+            td = @client.telephone_number
+          tr
+            td 登録日
+            td = l @client.created_at
+      span = link_to "編集する", edit_member_client_path(@client), class: "btn btn-info mt-3 mb-3 btn-block"
+    div.col-lg-8
+      h3 コメント
+      div
+        = render partial: 'member/client_comments/form', locals: { client: @client, client_comment: @client_comment }
+      div.mt-3
+        #client_comments_area
+          = render partial: 'member/client_comments/index', locals: { client_comments: @client_comments }
 
-span = link_to "編集する", edit_member_client_path(@client)
-
-table
-  tbody
-    tr
-      td 会社名
-      td = @client.client_company.name
-    tr
-      td 支社・支店
-      td = @client.branch_name
-    tr
-      td 所在地
-      td = @client.address
-    tr
-      td 連絡先
-      td = @client.telephone_number
-    tr
-      td 登録日
-      td = l @client.created_at
-
-h3 担当者一覧
-table
-  thead
-    tr
-      th 部署名
-      th 氏名
-      th 電話
-      th メール
-      th ステータス
-  tbody
-    = form_with model: @client_person, url: member_client_client_people_path(@client), local: true do |f|
-      tr
-        td = f.text_field :department
-        td = f.text_field :name
-        td = f.text_field :telephone_number
-        td = f.text_field :email
-        td = f.submit "新規登録"
-  tbody
-    - @client_people.each do |client_person|
-      tr
-        td = client_person.department
-        td = client_person.name
-        td = client_person.telephone_number
-        td = client_person.email
-        td = form_with model: client_person, url: member_client_client_person_path(id: client_person.id, client_id: client_person.client.id), local:true do |f|
-           = f.select :status, [["現職","0"], ["異動","1"], ["退職","2"]]
-           = f.submit "更新"
+  div.row
+    div.col-lg-12
+      h3 担当者一覧
+      table.table.table-bordered.table-sm.table-hover
+        thead
+          tr
+            th 部署名
+            th 氏名
+            th 電話
+            th メール
+            th ステータス
+        tbody
+          = form_with model: @client_person, url: member_client_client_people_path(@client), local: true do |f|
+            tr
+              td = f.text_field :department, class: "form-control"
+              td = f.text_field :name, class: "form-control"
+              td = f.text_field :telephone_number, class: "form-control"
+              td = f.text_field :email, class: "form-control"
+              td = f.submit "登録", class: "btn btn-outline-info btn-sm"
+        tbody
+          - @client_people.each do |client_person|
+            tr
+              td = client_person.department
+              td = client_person.name
+              td = client_person.telephone_number
+              td = client_person.email
+              td = form_with model: client_person, url: member_client_client_person_path(id: client_person.id, client_id: client_person.client.id), local:true do |f|
+                 = f.select :status, [["現職","0"], ["異動","1"], ["退職","2"]], class: "form-control"
+                 = f.submit "更新", class: "btn btn-outline-info btn-sm"
 
 
-h3
-div
-  = render partial: 'member/client_comments/form', locals: { client: @client, client_comment: @client_comment }
-div
-  #client_comments_area
-    = render partial: 'member/client_comments/index', locals: { client_comments: @client_comments }
