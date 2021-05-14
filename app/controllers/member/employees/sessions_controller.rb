@@ -2,6 +2,8 @@
 
 class Member::Employees::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
+  before_action :reject_inactive_employee, only: [:create]
+
   def guest_sign_in
     employee = Employee.guest
     sign_in employee
