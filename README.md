@@ -10,7 +10,6 @@
 
 顧客情報を共有して情報の風化を防ぐ！
 利益率まで意識した売上を管理することで営業員の数字に対する意識を強める！
-スケジュールも管理できて一石三鳥！
 
 ### テーマを選んだ理由
 
@@ -29,9 +28,20 @@
 
 ### 主な利用シーン
 
-日々のスケジュール管理、売上発生タイミング、新規顧客や新規担当との挨拶時
+日々のスケジュール管理、案件発生タイミング、新規顧客や新規担当との挨拶時
 
 ## 設計書
+テーブル定義書
+<https://docs.google.com/spreadsheets/d/1lDysvIkFIlUWG1ZLw3B_7OSuz4cvGNnYkwFB1XT6HSA/edit?usp=sharing>
+
+UI
+<https://drive.google.com/file/d/1S8Orimz1YfSIMe_Or95PGR5v-7gseBBW/view?usp=sharing>
+
+ワイヤーフレーム
+<https://drive.google.com/file/d/1iRyrIKB1ItyngpX99K9l_S3k0zeYF_EJ/view?usp=sharing>
+
+ER
+<https://drive.google.com/file/d/1ocSWRmseeEG7LCALzjOkdTzAam6v4RTg/view?usp=sharing>
 
 ### 機能一覧
 
@@ -40,12 +50,7 @@
 ## 開発環境
 
 - OS：Linux(CentOS)
-- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- 言語：HTML,CSS,JavaScript,Ruby
 - フレームワーク：Ruby on Rails
 - JS ライブラリ：jQuery
-- 仮想環境：Vagrant,VirtualBox
 
-## 使用素材
-
-- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名と URL を明記してください。
-- 使用しない場合は、使用素材の項目を README から削除してください。
