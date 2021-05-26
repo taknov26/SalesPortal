@@ -25,4 +25,5 @@ div.container
               td = form_with model: employee, url: manager_employee_path(employee), local:true do |f|
                  = f.select :role, [["一般", "1"], ["管理職", "99"]]
                  = f.submit "更新", class: "btn btn-outline-info btn-sm"
+          = paginate @employees
 

@@ -7,7 +7,7 @@ class Member::EmployeesController < ApplicationController
   end
 
   def index
-    @employees = Employee.all
+    @employees = Employee.page(params[:page])
   end
 
   def edit

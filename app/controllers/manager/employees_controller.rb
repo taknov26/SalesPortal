@@ -2,7 +2,7 @@ class Manager::EmployeesController < ApplicationController
   before_action :no_authority
 
   def index
-    @employees = Employee.all
+    @employees = Employee.page(params[:page])
   end
 
   def update

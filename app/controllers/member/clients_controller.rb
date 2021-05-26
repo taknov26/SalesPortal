@@ -47,7 +47,7 @@ class Member::ClientsController < ApplicationController
 
   def premise
     @client_companies = ClientCompany.all
-    @clients = Client.all
+    @clients = Client.page(params[:page])
     @client_people = ClientPerson.all
   end
 end

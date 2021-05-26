@@ -26,4 +26,5 @@ div.container
                 = client.client_comments.count
                 |件
               td = link_to "詳細", member_client_path(client)
+          = paginate @clients
 
